@@ -1,0 +1,46 @@
+{
+    "products": [
+    {
+      "id": "1",
+      "name": "Áo thun nam Uniqlo",
+      "price": 250000,
+      "image": "https://via.placeholder.com/150",
+      "description": "Áo chất liệu cotton, thoáng mát"
+    },
+    {
+      "id": "2",
+      "name": "Giày thể thao Nike Air",
+      "price": 1350000,
+      "image": "https://via.placeholder.com/150",
+      "description": "Giày thể thao cao cấp Nike"
+    }
+  ]
+  ,
+    "categories": [
+      {
+        "id": 1,
+        "name": "Smartphones"
+      },
+      {
+        "id": 2,
+        "name": "Tablets"
+      },
+      {
+        "id": 3,
+        "name": "Laptops"
+      }
+    ],
+     "brands": [
+      { "id": 1, "name": "Nike" },
+      { "id": 2, "name": "Adidas" },
+      { "id": 3, "name": "Puma" }
+    ],
+    "orders": [
+      { "id": 1, "customer": "Nguyễn Văn A", "total": 1200000, "status": "Đã giao" },
+      { "id": 2, "customer": "Trần Thị B", "total": 890000, "status": "Đang xử lý" }
+    ],
+    "users": [
+      { "id": 1, "name": "admin", "email": "admin@example.com", "role": "admin" },
+      { "id": 2, "name": "user01", "email": "user01@example.com", "role": "user" }
+    ]
+  }
