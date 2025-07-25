@@ -12,7 +12,7 @@ function App() {
       <CategoryList />
       <BrandList />
       <UserList />
-      <OrderList/>
+      <OrderList/>                                                                  
       
     </div>
   );
