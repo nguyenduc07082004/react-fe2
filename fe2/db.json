@@ -1,5 +1,5 @@
 {
-    "products": [
+  "products": [
     {
       "id": "1",
       "name": "Áo thun nam Uniqlo",
@@ -14,33 +14,44 @@
       "image": "https://via.placeholder.com/150",
       "description": "Giày thể thao cao cấp Nike"
     }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Smartphones"
+    },
+    {
+      "id": 2,
+      "name": "Tablets"
+    },
+    {
+      "id": 3,
+      "name": "Laptops"
+    }
+  ],
+  "brands": [
+    { "id": 1, "name": "Nike" },
+    { "id": 2, "name": "Adidas" },
+    { "id": 3, "name": "Puma" }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customer": "Nguyễn Văn A",
+      "email": "vana@gmail.com",
+      "phone": "0912345678",
+      "address": "123 Lê Lợi, Q1, HCM",
+      "total": 1200000,
+      "status": "Đã giao",
+      "createdAt": "2025-07-15T10:00:00Z",
+      "items": [
+        { "productId": 101, "productName": "Áo thun nam", "quantity": 2, "price": 250000 },
+        { "productId": 102, "productName": "Quần jeans nữ", "quantity": 1, "price": 700000 }
+      ]
+    }
+  ],
+  "users": [
+    { "id": 1, "name": "admin", "email": "admin@example.com", "role": "admin" },
+    { "id": 2, "name": "user01", "email": "user01@example.com", "role": "user" }
   ]
-  ,
-    "categories": [
-      {
-        "id": 1,
-        "name": "Smartphones"
-      },
-      {
-        "id": 2,
-        "name": "Tablets"
-      },
-      {
-        "id": 3,
-        "name": "Laptops"
-      }
-    ],
-     "brands": [
-      { "id": 1, "name": "Nike" },
-      { "id": 2, "name": "Adidas" },
-      { "id": 3, "name": "Puma" }
-    ],
-    "orders": [
-      { "id": 1, "customer": "Nguyễn Văn A", "total": 1200000, "status": "Đã giao" },
-      { "id": 2, "customer": "Trần Thị B", "total": 890000, "status": "Đang xử lý" }
-    ],
-    "users": [
-      { "id": 1, "name": "admin", "email": "admin@example.com", "role": "admin" },
-      { "id": 2, "name": "user01", "email": "user01@example.com", "role": "user" }
-    ]
-  }
+}

@@ -1,24 +1,35 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Table, Typography } from "antd";
+import { Table, Typography, Tag } from "antd";
 
 const { Title } = Typography;
+
+interface OrderItem {
+  productId: number;
+  productName: string;
+  quantity: number;
+  price: number;
+}
 
 interface Order {
   id: number;
   customer: string;
+  email: string;
+  phone: string;
+  address: string;
   total: number;
   status: string;
+  createdAt: string;
+  items: OrderItem[];
 }
 
-const OrderList: React.FC = () => {
+function OrderList() {
   const fetchOrders = async (): Promise<Order[]> => {
     const res = await fetch("http://localhost:3001/orders");
     if (!res.ok) throw new Error("Failed to fetch orders");
     return res.json();
   };
 
-  const { data = [], isLoading, isError, error } = useQuery<Order[]>({
+  const { data = [], isLoading, error } = useQuery<Order[]>({
     queryKey: ["orders"],
     queryFn: fetchOrders,
   });
@@ -27,32 +38,60 @@ const OrderList: React.FC = () => {
     {
       title: "ID",
       dataIndex: "id",
-      key: "id",
     },
     {
       title: "Khách hàng",
       dataIndex: "customer",
-      key: "customer",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "SĐT",
+      dataIndex: "phone",
+    },
+    {
+      title: "Địa chỉ",
+      dataIndex: "address",
     },
     {
       title: "Tổng tiền",
       dataIndex: "total",
-      key: "total",
-      render: (value: number) => `${value.toLocaleString("vi-VN")} ₫`,
+      render: (total: number) => `${total.toLocaleString("vi-VN")} ₫`,
+      sorter: (a: Order, b: Order) => a.total - b.total,
     },
     {
       title: "Trạng thái",
       dataIndex: "status",
-      key: "status",
+      render: (status: string) => {
+        let color = "default";
+        if (status === "Đã giao") color = "green";
+        else if (status === "Đang xử lý") color = "orange";
+        else color = "red";
+
+        return <Tag color={color}>{status}</Tag>;
+      },
+    },
+    {
+      title: "Ngày tạo",
+      dataIndex: "createdAt",
+      render: (date: string) =>
+        new Date(date).toLocaleString("vi-VN", {
+          hour12: false,
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+        }),
     },
   ];
 
   return (
     <div>
       <Title level={3}>Danh sách đơn hàng</Title>
-
-      {isError && <p style={{ color: "red" }}>{(error as Error).message}</p>}
-
+      {error && <p style={{ color: "red" }}>{(error as Error).message}</p>}
       <Table
         dataSource={data}
         columns={columns}
@@ -62,6 +101,6 @@ const OrderList: React.FC = () => {
       />
     </div>
   );
-};
+}
 
 export default OrderList;

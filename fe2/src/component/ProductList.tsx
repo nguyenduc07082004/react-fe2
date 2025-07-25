@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Image, Table, Typography } from "antd";
+import Header from "./Header";
 
 const { Title } = Typography;
 
@@ -54,6 +55,7 @@ function ProductList() {
 
   return (
     <div>
+        <Header />
       <Title level={3}>Danh sách sản phẩm</Title>
 
       {error && <p style={{ color: "red" }}>{(error as Error).message}</p>}

@@ -1,21 +1,44 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProductList from "./component/ProductList";
-import "./App.css";
-import CategoryList from "./component/CategoryList";
-import BrandList from "./component/BrandList";
-import UserList from "./component/UserList";
+import "./App.css"
 import OrderList from "./component/OrderList";
+import BrandList from "./component/BrandList";
+import CategoryList from "./component/CategoryList";
+import UserList from "./component/UserList";
 
-function App() {
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <h1>Trang chủ</h1>,
+  },
+  {
+    path: "/products",
+    element: <ProductList />,
+  },
+  {
+    path: "/users",
+    element: <UserList />,
+  },
+  {
+    path: "/categories",
+    element: <CategoryList />,
+  },
+  {
+    path: "/brands",
+    element: <BrandList />,
+  },
+  {
+    path: "/oderlist",
+    element: <OrderList />,
+  }
+  
+]);
+
+function App () {
   return (
     <div>
-      <ProductList />
-      <CategoryList />
-      <BrandList />
-      <UserList />
-      <OrderList/>                                                                  
-      
+      <RouterProvider router={router} />
     </div>
   );
 }
-
 export default App;
